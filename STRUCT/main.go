@@ -6,12 +6,12 @@ import (
 
 type person struct {
 	firstName string
-	lastName string
+	lastName  string
 	contactInfo
 }
 
 type contactInfo struct {
-	email string
+	email   string
 	zipCode int
 }
 
@@ -25,14 +25,14 @@ func main() {
 	// fmt.Println(james)
 	// james.firstName = "Arijit"
 	// james.lastName = "Roy"
-	// // %+v prints out all the fildnames and corresponding values in a struct
+	// // %+v prints out all the fieldnames and corresponding values in a struct
 	// fmt.Printf("%+v", james);
 
 	jim := person{
 		firstName: "Jim",
-		lastName: "Party",
+		lastName:  "Party",
 		contactInfo: contactInfo{
-			email: "jim@gmail.com",
+			email:   "jim@gmail.com",
 			zipCode: 4567732,
 		},
 	}
@@ -40,9 +40,9 @@ func main() {
 	// jimPointer.updateName("Jimmy")
 	jim.updateName("Jimmy")
 	jim.print()
-	
+
 }
-func (personPointer *person) updateName(newFirstName string){
+func (personPointer *person) updateName(newFirstName string) {
 	(*personPointer).firstName = newFirstName
 }
 func (p person) print() {
