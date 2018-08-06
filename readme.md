@@ -54,3 +54,5 @@ func (personPointer *person) updateName(newFirstName string)
   Here *person is just a pointer type. personPointer is the address of the the variable
 
 
+go routons are created using go function name
+channels are way to communicate b/w go routines
