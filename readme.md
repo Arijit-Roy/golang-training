@@ -42,7 +42,7 @@ io/ioutil package : for file I/o
 os package : platform indepenedent os handling
 strings package: for string manipulation 
 https://golang.org/pkg/
-all package methods are camecased
+all package methods are camelcased
 
 // accpting multiple return from function
 bs, err := ioutil.ReadFile(fileName)
@@ -56,3 +56,7 @@ func (personPointer *person) updateName(newFirstName string)
 
 go routons are created using go function name
 channels are way to communicate b/w go routines
+
+sleep pauses current goroutine for at least duration
+
+do not use variable of another subroutine. always use a function literal to pass value to different subroutines

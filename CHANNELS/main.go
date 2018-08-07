@@ -1,13 +1,14 @@
 package main
 
-import(
+import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
-func main(){
+func main() {
 
-	links:= []string{
+	links := []string{
 		"http://google.com",
 		"http://facebook.com",
 		"http://stackoverflow.com",
@@ -18,14 +19,19 @@ func main(){
 	c := make(chan string)
 
 	for _, link := range links {
-		 go visit(link, c)
+		go visit(link, c)
 	}
-	for i:=0; i< len(links); i++{
-		fmt.Println(<-c)
+	// waiting for channel to have some data
+	for l := range c {
+		// fmt.Println(<-c)
+		go func(link string) {
+			time.Sleep(5 * time.Second)
+			visit(link, c)
+		}(l)
 	}
 }
 
-func visit(link string, c chan string){
+func visit(link string, c chan string) {
 	_, err := http.Get(link)
 
 	if err != nil {
@@ -35,6 +41,5 @@ func visit(link string, c chan string){
 	}
 
 	fmt.Println(link, "is up and running")
-	c <- "up"
+	c <- link
 }
-
